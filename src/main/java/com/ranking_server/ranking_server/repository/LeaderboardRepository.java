@@ -25,4 +25,6 @@ public interface LeaderboardRepository extends JpaRepository<ScoreEntry, Long> {
     
     
     
+    
+    
 }
