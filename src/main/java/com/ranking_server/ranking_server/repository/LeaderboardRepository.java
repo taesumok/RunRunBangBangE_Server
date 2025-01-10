@@ -21,6 +21,5 @@ public interface LeaderboardRepository extends JpaRepository<ScoreEntry, Long> {
     
     @Query("SELECT se.playerName FROM ScoreEntry se WHERE se.guid=:guid")
     String getName( @Param("guid") String guid);
-          
-
+         
 }
