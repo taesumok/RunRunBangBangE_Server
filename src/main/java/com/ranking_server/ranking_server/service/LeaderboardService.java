@@ -19,7 +19,11 @@ public class LeaderboardService {
     }
     
     public void updateScore(String guid, int score) {
-    	repository.updateScore(guid, score);
+    	
+        int org_score = repository.getScore(guid);
+        if(score >= org_score) {
+        	repository.updateScore(guid, score);
+        }
     }
 
     public void submitName(String guid, String playerName) {

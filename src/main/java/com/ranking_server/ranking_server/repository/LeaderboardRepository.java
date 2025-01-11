@@ -16,10 +16,21 @@ public interface LeaderboardRepository extends JpaRepository<ScoreEntry, Long> {
     
     @Transactional
     @Modifying(clearAutomatically = true)
-    @Query("UPDATE ScoreEntry se SET se.score=:score WHERE se.guid=:guid")
+    @Query("UPDATE ScoreEntry se "
+    	 + "SET se.score=:score "
+    	 + "WHERE se.guid=:guid")
     void updateScore( @Param("guid") String guid, @Param("score") int score);
     
-    @Query("SELECT se.playerName FROM ScoreEntry se WHERE se.guid=:guid")
+    @Query("SELECT se.playerName "
+    	 + "FROM ScoreEntry se "
+    	 + "WHERE se.guid=:guid")
     String getName( @Param("guid") String guid);
+    
+    
+    
+    @Query("SELECT se.score "
+       	 + "FROM ScoreEntry se "
+       	 + "WHERE se.guid=:guid")
+    int getScore( @Param("guid") String guid);
          
 }
